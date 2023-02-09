@@ -32,7 +32,7 @@ class InfoDialog extends StatelessWidget {
         child: Column(
           children: [
             SimpleText(
-              infoText,
+              infoText ?? '',
             ),
             // SmallButton(
             //   onTap: onDismiss,

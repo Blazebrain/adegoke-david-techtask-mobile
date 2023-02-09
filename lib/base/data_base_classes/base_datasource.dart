@@ -16,20 +16,18 @@
 /// conditions set in private function `_checkForError`
 ///
 /// Original written by Flutterian MajorE
-/// Github: @Meghatronics Twitter: @MajorE_1
 
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
-
 import '../../utilities/constants/constants.dart';
 import 'api_response.dart';
 import 'exceptions.dart';
 import 'failures.dart';
 
-mixin BaseDatasource {
+class BaseDatasource {
   final String baseUrl = apiBaseUrl;
 
   static String? _token;
@@ -61,7 +59,7 @@ mixin BaseDatasource {
       final data = jsonDecode(response.body);
       final error = _checkForError(response.statusCode, data);
       return ApiResponse(
-        data: data,
+        data: {'data': data},
         error: error,
       );
     } on FormatException {
@@ -92,7 +90,7 @@ mixin BaseDatasource {
       required Map<String, dynamic> payload,
       bool useToken = true}) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    final body = jsonEncode(payload);
+    final body = payload != null ? jsonEncode(payload) : null;
     final request = http.post(
       url,
       body: body,
@@ -111,7 +109,7 @@ mixin BaseDatasource {
       required Map<String, dynamic> payload,
       bool useToken = true}) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    final body = jsonEncode(payload);
+    final body = payload != null ? jsonEncode(payload) : null;
     final request = http.patch(
       url,
       body: body,
@@ -182,27 +180,27 @@ mixin BaseDatasource {
   Failure? _checkForError(int statusCode, data) {
     String? returnedMessage;
 
-    if (data != null) {
-      //Check if request was successful
-      final success = data['status'] == 'success';
-      //If successful, return no failure
-      if (success) return null;
+    // if (data != null) {
+    //Check if request was successful
+    //   final success = data['status'] == 'success';
+    //   //If successful, return no failure
+    //   if (success ?? false) return null;
 
-      //Check list of errors
-      final errors = data['errors'] as Map;
+    //   //Check list of errors
+    //   final errors = data['errors'] as Map;
 
-      //If no error field - use messsage for failure
-      if (errors.isEmpty) {
-        returnedMessage = data['message'];
-      }
-      //If there are error fields - use errors for failure
-      else {
-        returnedMessage = '';
-        errors.forEach((key, value) {
-          returnedMessage = '$returnedMessage\n${value[0]}';
-        });
-      }
-    }
+    //   //If no error field - use messsage for failure
+    //   if (errors == null || errors.isEmpty) {
+    //     returnedMessage = data['message'];
+    //   }
+    //   //If there are error fields - use errors for failure
+    //   else {
+    //     returnedMessage = '';
+    //     errors.forEach((key, value) {
+    //       returnedMessage = '$returnedMessage\n${value[0]}';
+    //     });
+    //   }
+    // }
     switch (statusCode) {
       case 200:
         return null;
