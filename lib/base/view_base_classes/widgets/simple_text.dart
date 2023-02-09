@@ -24,10 +24,10 @@ class SimpleText extends StatelessWidget {
       maxLines: maxLines,
       softWrap: true,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
-      style: GoogleFonts.mulish(
+      style: GoogleFonts.montserrat(
         fontSize: size ?? 16,
         fontWeight: weight ?? FontWeight.w400,
-        color: color ?? themeTextBodyColor,
+        color: color ?? textBlackColor,
       ),
     );
   }

@@ -10,7 +10,7 @@ class AppLoadingIndicator extends StatelessWidget {
   Widget _buildIndicator() {
     return const CircularProgressIndicator(
       strokeWidth: 1.15,
-      backgroundColor: successGreen,
+      backgroundColor: darkGreenColor,
     );
   }
 
