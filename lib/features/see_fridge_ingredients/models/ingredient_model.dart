@@ -1,6 +1,3 @@
-import 'package:meta/meta.dart';
-
-//TODO
 class IngredientModel {
   final String name;
   final DateTime? finishedBy;

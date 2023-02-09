@@ -1,5 +1,4 @@
 import 'package:intl/intl.dart';
-import 'package:meta/meta.dart';
 import 'package:tech_task/utilities/constants/constants.dart';
 
 import '../../../app_routing/app_navigator.dart';

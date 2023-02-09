@@ -90,7 +90,7 @@ class BaseDatasource {
       required Map<String, dynamic> payload,
       bool useToken = true}) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    final body = payload != null ? jsonEncode(payload) : null;
+    final body = jsonEncode(payload);
     final request = http.post(
       url,
       body: body,
@@ -109,7 +109,7 @@ class BaseDatasource {
       required Map<String, dynamic> payload,
       bool useToken = true}) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    final body = payload != null ? jsonEncode(payload) : null;
+    final body = jsonEncode(payload);
     final request = http.patch(
       url,
       body: body,

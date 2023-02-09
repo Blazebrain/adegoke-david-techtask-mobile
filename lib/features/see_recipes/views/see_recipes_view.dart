@@ -72,7 +72,7 @@ class SeeRecipesView extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Expanded(
-                child: [].isEmpty //TODO
+                child: [].isEmpty
                     ? Align(
                         alignment: const Alignment(0, -0.3),
                         child: Column(
