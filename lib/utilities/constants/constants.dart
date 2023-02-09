@@ -16,3 +16,5 @@ const defaultAvatarAsset = 'assets/images/logo.png';
 const defaultNetworkImage = 'https://placeimg.com/300/550/nature';
 
 //* App pointers and keys
+const ingredientsNameListPointer = 'ingredients';
+const dateDescriptionPointer = 'dateDesc';

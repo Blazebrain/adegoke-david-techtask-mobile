@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
+import 'package:tech_task/utilities/constants/constants.dart';
 
 import '../../../app_routing/app_navigator.dart';
 import '../../../base/view_model_base_classes/base_view_model.dart';
@@ -82,9 +83,15 @@ class FridgeViewModel extends BaseViewModel {
   }
 
   void seeRecipes() {
+    final ingredientNameList = fridgeContent!.selectedIngredients
+        .map((ingredient) => ingredient.name)
+        .toList();
     AppNavigator.pushNamed(
       recipesViewRoute,
-      arguments: fridgeContent!.selectedIngredients,
+      arguments: {
+        ingredientsNameListPointer: ingredientNameList,
+        dateDescriptionPointer: _dateDescription,
+      },
     );
   }
 

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tech_task/utilities/constants/constants.dart';
 
 import '../features/see_fridge_ingredients/views/fridge_view.dart';
 import '../features/see_fridge_ingredients/views/welcome_view.dart';
+import '../features/see_recipes/views/see_recipes_view.dart';
 import 'route_names.dart';
 
 class AppRouter {
@@ -23,6 +25,12 @@ class AppRouter {
 
       case fridgeViewRoute:
         return _cupertinoPageRoute(const FridgeView());
+      case recipesViewRoute:
+        final argumentMap = settings.arguments as Map;
+        return _cupertinoPageRoute(SeeRecipesView(
+          ingredientsForSearch: argumentMap[ingredientsNameListPointer],
+          dateDescription: argumentMap[dateDescriptionPointer],
+        ));
 
       //* Bad route - Route not found page
       default:
