@@ -25,6 +25,7 @@ class FridgeViewModel extends BaseViewModel {
   DateTime _lunchDate = DateTime.now();
   String? _dateDescription;
   final _ingredients = <IngredientModel>[];
+
   IngredientsAtDateViewModel? fridgeContent;
 
   Future<void> openFridge() async {
@@ -57,7 +58,7 @@ class FridgeViewModel extends BaseViewModel {
       return 'This ${DAY_STRING[date.weekday]}';
   }
 
-  set lunchDate(DateTime date) {
+  set lunchDate(DateTime? date) {
     if (date == null) return;
     _lunchDate = date;
     fridgeContent = IngredientsAtDateViewModel(

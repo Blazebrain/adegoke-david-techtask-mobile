@@ -35,7 +35,7 @@ export 'widgets/app_loading_indicator.dart';
 // }
 
 class BaseViewBuilder<T extends BaseViewModel> extends StatefulWidget {
-  final T model;
+  final T? model;
   final Widget? child;
   final Function(T model)? initState;
   final Widget Function(T, Widget?) builder;
@@ -58,7 +58,7 @@ class _BaseViewBuilderState<T extends BaseViewModel>
   void initState() {
     if (widget.initState != null)
       SchedulerBinding.instance.addPostFrameCallback(
-        (_) => widget.initState!(widget.model),
+        (_) => widget.initState!(widget.model!),
       );
     super.initState();
   }
@@ -66,7 +66,7 @@ class _BaseViewBuilderState<T extends BaseViewModel>
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>.value(
-      value: widget.model,
+      value: widget.model!,
       child: Consumer<T>(
         builder: (BuildContext context, value, Widget? child) {
           return widget.builder(value, child);
