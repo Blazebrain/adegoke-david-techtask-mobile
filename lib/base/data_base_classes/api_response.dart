@@ -14,7 +14,7 @@ class ApiResponse<T> {
             'Must have one of data or error');
 }
 
-mixin Converter<E> on ApiResponse<Map<String, dynamic>> {
+extension Converter<E> on ApiResponse<Map<String, dynamic>> {
   ApiResponse<E> transform<E>(
     E Function(Map<String, dynamic> data) transformer, {
     bool ignoreError = false,
