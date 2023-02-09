@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'app_dependencies.dart';
 import 'app_routing/app_navigator.dart';
 import 'app_routing/app_router.dart';
 import 'base/view_base_classes/style/style.dart';
 import 'utilities/constants/constants.dart';
 
 void main() async {
+  await AppDependencies.register();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(KlashaStageTwoTechTask());
 }

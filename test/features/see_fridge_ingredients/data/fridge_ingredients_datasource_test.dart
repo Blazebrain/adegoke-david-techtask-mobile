@@ -22,6 +22,14 @@ void main() {
                   {
                     'title': 'test',
                     'use-by': '2020-04-07',
+                  },
+                  {
+                    'title': 'test',
+                    'use-by': '2020-04-07',
+                  },
+                  {
+                    'title': 'test',
+                    'use-by': '2020-04-07',
                   }
                 ]
               },
@@ -47,7 +55,10 @@ void main() {
                 await mockDatasource.sendGet(endpoint: '/ingredients');
             final datasourceResponse =
                 await fridgeIngredientsDatasource.fridgeIngredients();
-            expect(datasourceResponse.data?.length, apiResponse.data?.length);
+            expect(
+              datasourceResponse.data!.length,
+              apiResponse.data!['data'].length,
+            );
           },
         );
       },
